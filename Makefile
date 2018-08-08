@@ -9,10 +9,13 @@ run:
 	npm run start
 
 .PHONY: build
+build:
 	npm run build:prod
 
 .PHONY: build-dev
+build-dev:
 	npm run build:dev
 
 .PHONY: lint
+lint:
 	npm run eslint
