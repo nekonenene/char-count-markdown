@@ -1,0 +1,21 @@
+{
+  "name": "template2",
+  "version": "0.1.0",
+  "description": "Web制作時のテンプレート",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nekonenene"
+  },
+  "author": "nekonenene",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
