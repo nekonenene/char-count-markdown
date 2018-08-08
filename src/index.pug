@@ -3,7 +3,7 @@ html(lang="ja")
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
 
     meta(name="description" content="")
     meta(name="keywords"    content="")
@@ -22,33 +22,40 @@ html(lang="ja")
     // Font Awesome!
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
 
-    // jQuery
-    script(
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"
-    )
-
     //- My Stylesheets
     link(rel="stylesheet" href="./style/top.css")
     //- My Scripts
     script(src="./js/top.js")
-  body
-    #site-box
-      #site-main
-        h3 #{title}
-        #content
-          p
-            button.blue-button(type="button") あお
-            button.green-button(type="button") みどり
-            button.yellow-button(type="button") きいろ
-            button.red-button(type="button") あか
+  body.bg-light
+    main(role="main")
+      section.jumbotron.text-center
+        .container
+          h1.jumbotron-heading #{title}
+          p.lead.text-muted
+            | ようこそ！
+      .container
+        .row
+          .col-md-12
+            button.btn.btn-raised.btn-primary(type="button") あお
+            button.btn.btn-raised.bg-green.text-white(type="button") みどり
+            button.btn.btn-raised.bg-yellow(type="button") きいろ
+            button.btn.btn-raised.btn-danger(type="button") あか
 
-          p
-            .output
+        p
+          .output
 
-      #footer
-        a(href="http://hato-neko.x0.com" target="_blank" title="ハトネコエセンター").
-          ハトネコエ
-        a(href="https://twitter.com/nekonenene" target="_blank" title="Twitter: nekonenene").
-          (@nekonenene)
+    footer.container.text-right
+      a(href="http://hato-neko.x0.com" target="_blank" title="ハトネコエセンター").
+        ハトネコエ
+      | &nbsp;
+      a(href="https://twitter.com/nekonenene" target="_blank" title="Twitter: nekonenene").
+        (@nekonenene)
+
+      //- Optional JavaScript
+      //- jQuery first, then Popper.js, then Bootstrap JS
+      script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous")
+      script(src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous")
+      script(src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous")
+      <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+    </body>
+  </html>

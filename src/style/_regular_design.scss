@@ -4,21 +4,21 @@ $gothic: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリ�
 $mincho: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "游明朝", YuMincho, "ＭＳ 明朝", "メイリオ", Meiryo, "Times New Roman", serif;
 
 .gothic {
-	font-family: $gothic;
+  font-family: $gothic;
 }
 .mincho {
-	font-family: $mincho;
+  font-family: $mincho;
 }
 
 /* 回り込み解除 */
 .clear {
-	clear      : both;
-	height     : 0;
-	font-size  : 1px;
-	line-height: 0;
-	visibility : hidden;
+  clear      : both;
+  height     : 0;
+  font-size  : 1px;
+  line-height: 0;
+  visibility : hidden;
 }
 
 img {
-	border: 0;
+  border: 0;
 }
