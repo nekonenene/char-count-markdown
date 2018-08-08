@@ -1,0 +1,81 @@
+$blue       : #1c50aa;
+$dark-blue  : #0a3754;
+$green      : #1faa1c;
+$dark-green : #1d7737;
+$yellow     : #d98310;
+$dark-yellow: #613d0d;
+$red        : #bf3434;
+$dark-red   : #4b1717;
+
+@import "./regular_design.scss";
+@import "./modern_button.scss";
+
+
+body {
+	margin          : 0;
+	padding         : 0;
+	color           : #131c16;
+	background-color: #f2faff;
+	font-family     : $gothic;
+	font-size       : 17px;
+}
+
+p {
+	margin        : 8px 0;
+	font-size     : 100%;
+	letter-spacing: 0.06em;
+}
+
+/*----- サイトの全体レイアウト -----*/
+// コンテンツ全体
+#site-box {
+	display         : table;
+	width           : 90%;
+	margin          : 34px auto;
+	padding         : 0;
+	background-color: #d1f4fa;
+	border          : 2px ridge #2c2d0b;
+}
+
+// フッターじゃない部分
+#site-main {
+	display: block;
+	width  : auto;
+	margin : 0;
+	padding: 10px 8px 90px;
+}
+
+// フッター
+#footer {
+	clear           : both;
+	width           : auto;
+	margin          : 0;
+	padding         : 5px 15px 1px;
+	background-color: #2f2761;
+	color           : #ffffff;
+	text-align      : right;
+
+	a {
+		padding: 2px;
+		color  : #ffffff;
+	}
+}
+
+#content {
+	margin: 10px 26px;
+}
+
+.caution {
+	margin-top     : 10px;
+	color          : #7c061a;
+	font-size      : 82%;
+	text-align     : right;
+	text-decoration: underline;
+}
+
+// テキストの調整 small, big など
+@import "./h_title.scss";
+@import "./text_decoration.scss";
+
+// 色の設定
+@import "./colors.scss";

@@ -1,0 +1,44 @@
+@mixin button-template($bg-color, $bg-hover-color) {
+	display            : inline-block;
+	height             : 32px;
+	margin             : 8px 0;
+	margin-right       : 8px;
+	padding            : 0 25.6px;
+	background         : $bg-color;
+	color              : #ffffff;
+	border             : 0;
+	border-radius      : 3px;
+	box-shadow         : none;
+	transition-property: background;
+	transition-duration: 0.3s;
+	line-height        : 32px;
+	font               : {
+		family: $gothic;
+		size  : 14px;
+		weight: 300;
+	}
+	text               : {
+		align     : center;
+		shadow    : none;
+		decoration: none;
+	}
+	&:hover, &:focus {
+		background: $bg-hover-color;
+		cursor    : pointer;
+	}
+}
+
+button {
+	&.blue-button {
+		@include button-template($blue, $dark-blue);
+	}
+	&.green-button {
+		@include button-template($green, $dark-green);
+	}
+	&.yellow-button {
+		@include button-template($yellow, $dark-yellow);
+	}
+	&.red-button {
+		@include button-template($red, $dark-red);
+	}
+}

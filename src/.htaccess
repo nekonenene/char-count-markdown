@@ -1,0 +1,13 @@
+DirectoryIndex index.html 404.html
+
+Order allow,deny
+allow from all
+
+<Files ~ "^\.(htaccess|htpasswd)$">
+deny from all
+</Files>
+
+ErrorDocument 400 ../400.html
+ErrorDocument 401 ../401.html
+ErrorDocument 403 ../403.html
+ErrorDocument 404 ../404.html

@@ -2,10 +2,10 @@
   "name": "template2",
   "version": "0.1.0",
   "description": "Web制作時のテンプレート",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js"
+    "start": "webpack-dev-server --mode development",
+    "build:dev": "webpack --mode development --config webpack.config.js",
+    "build:prod": "webpack --mode production --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -14,6 +14,23 @@
   "author": "nekonenene",
   "license": "MIT",
   "devDependencies": {
+    "apply-loader": "^2.0.0",
+    "autoprefixer": "^9.1.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^4.5.2",
+    "css-loader": "^1.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "globule": "^1.2.1",
+    "node-sass": "^4.9.2",
+    "postcss": "^7.0.2",
+    "postcss-loader": "^2.1.6",
+    "pug": "^2.0.3",
+    "pug-loader": "^2.4.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.22.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5"

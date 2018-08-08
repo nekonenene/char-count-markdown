@@ -1,0 +1,24 @@
+/* フォント */
+$gothic: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "Helvetica Neue", Helvetica, Arial, Roboto, "Droid Sans", "游ゴシック", YuGothic, sans-serif;
+
+$mincho: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "游明朝", YuMincho, "ＭＳ 明朝", "メイリオ", Meiryo, "Times New Roman", serif;
+
+.gothic {
+	font-family: $gothic;
+}
+.mincho {
+	font-family: $mincho;
+}
+
+/* 回り込み解除 */
+.clear {
+	clear      : both;
+	height     : 0;
+	font-size  : 1px;
+	line-height: 0;
+	visibility : hidden;
+}
+
+img {
+	border: 0;
+}

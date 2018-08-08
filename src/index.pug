@@ -1,0 +1,54 @@
+doctype html
+html(lang="ja")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    meta(name="description" content="")
+    meta(name="keywords"    content="")
+    meta(name="author"      content="nekonenene")
+    link(rel="shortcut icon" href="./img/favicon.ico")
+
+    //- for Android SmartPhone
+    meta(name="theme-color" content="#2b0de8")
+    link(rel="icon" href="./img/favicon_192.png" sizes="192x192")
+
+    - var title = "練習ページ";
+    title #{title}
+
+    // Normalize.css
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css")
+    // Font Awesome!
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+
+    // jQuery
+    script(
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    )
+
+    //- My Stylesheets
+    link(rel="stylesheet" href="./style/top.css")
+    //- My Scripts
+    script(src="./js/top.js")
+  body
+    #site-box
+      #site-main
+        h3 #{title}
+        #content
+          p
+            button.blue-button(type="button") あお
+            button.green-button(type="button") みどり
+            button.yellow-button(type="button") きいろ
+            button.red-button(type="button") あか
+
+          p
+            .output
+
+      #footer
+        a(href="http://hato-neko.x0.com" target="_blank" title="ハトネコエセンター").
+          ハトネコエ
+        a(href="https://twitter.com/nekonenene" target="_blank" title="Twitter: nekonenene").
+          (@nekonenene)

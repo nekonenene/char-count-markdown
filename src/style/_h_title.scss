@@ -1,0 +1,26 @@
+h1, h2, h3, h4 {
+	margin        : 25px 0;
+	padding       : 0 26px;
+	color         : #ff6d1b;
+	letter-spacing: 0.08em;
+}
+
+h1 {
+	font-size    : 220%;
+	border-bottom: dotted 6px;
+}
+
+h2 {
+	font-size    : 150%;
+	border-bottom: dotted 4px;
+}
+
+h3 {
+	font-size    : 120%;
+	border-bottom: double 2px;
+}
+
+h4 {
+	font-size    : 105%;
+	border-bottom: solid 1px;
+}
