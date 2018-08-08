@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const globule = require('globule');
 const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -43,16 +44,14 @@ const pugLoader = [
 const sassLoader = [
   {
     loader: 'css-loader',
-    options: {
-      minimize: true,
-    },
   },
   {
     loader: 'postcss-loader',
     options: {
       ident: 'postcss',
-      plugins: () => [
+      plugins: [
         autoprefixer(),
+        cssnano(),
       ],
     },
   },
