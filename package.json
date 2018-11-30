@@ -6,7 +6,8 @@
     "start": "webpack-dev-server --mode development",
     "build:dev": "webpack --mode development --config webpack.config.js",
     "build:prod": "webpack --mode production --config webpack.config.js",
-    "eslint": "eslint --ext .js ./src"
+    "eslint": "eslint --ext .js ./src",
+    "test": "echo 'test is nothing yet.'"
   },
   "repository": {
     "type": "git",
