@@ -62,7 +62,7 @@ const sassLoader = [
 const jsLoader = {
   loader: 'babel-loader',
   query: {
-    presets: ['env'],
+    presets: ['@babel/preset-env'],
   },
 };
 
