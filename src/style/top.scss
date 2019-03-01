@@ -7,6 +7,9 @@ $dark-yellow: #613d0d;
 $red        : #bf3434;
 $dark-red   : #4b1717;
 
+@import "node_modules/normalize.css/normalize";
+@import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+
 @import "base";
 
 body {
