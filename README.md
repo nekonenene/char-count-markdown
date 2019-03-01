@@ -4,7 +4,7 @@ https://github.com/nekonenene/web-dev-template を、gulpからwebpackに乗り�
 
 ## Node.js version
 
-v10.14.1 で構築
+v10.15.2 で構築
 
 ## 開発するには……
 
