@@ -20,7 +20,7 @@ html(lang="ja")
     //- My Stylesheets
     link(rel="stylesheet" href="./style/top.css")
   body.bg-light
-    main(role="main")
+    main#app(role="main")
       section.jumbotron.text-center
         .container
           h1.jumbotron-heading #{title}
@@ -29,9 +29,9 @@ html(lang="ja")
       .container
         .row
           .col-md-6
-            textarea#input(rows="25", style="width:100%;")
+            textarea(rows="25" style="width:100%;" v-model="inputText")
           .col-md-6
-            textarea#output(rows="25", style="width:100%;")
+            textarea(rows="25" style="width:100%;" v-model="outputText")
         p
           .output
 

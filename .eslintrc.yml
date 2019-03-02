@@ -1,4 +1,6 @@
-extends: "airbnb-base"
+extends:
+  - "airbnb-base"
+  - "plugin:vue/recommended"
 
 parserOptions:
   ecmaVersion: 2018
@@ -14,3 +16,5 @@ rules:
   quotes: ["warn", "single", { "allowTemplateLiterals": true }] # `` で囲むのがテンプレートリテラル
   no-unused-vars: warn
   func-names: ["error", "as-needed"]
+  object-shorthand: off # Vue.js としては hoge: function() { の書き方が一般的なので許可
+  no-new: off # Vue.js を使う際に new Vue とやりたいので許可

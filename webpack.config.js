@@ -6,6 +6,7 @@ const cssnano = require('cssnano');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 // 参考: https://qiita.com/toduq/items/2e0b08bb722736d7968c
 
@@ -79,7 +80,16 @@ const config = {
     rules: [
       {
         test: /\.pug$/,
-        use: ExtractTextPlugin.extract(pugLoader),
+        oneOf: [
+          {
+            // this applies to <template lang="pug"> in Vue components
+            resourceQuery: /^\?vue/,
+            use: ['pug-plain-loader'],
+          },
+          {
+            use: ExtractTextPlugin.extract(pugLoader),
+          },
+        ],
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -94,6 +104,10 @@ const config = {
             use: ExtractTextPlugin.extract(sassLoader),
           },
         ],
+      },
+      {
+        test: /\.vue$/,
+        use: ['vue-loader'],
       },
       {
         test: /\.js$/,
@@ -113,6 +127,7 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
+    new VueLoaderPlugin(),
   ],
 
   devServer: {
@@ -120,6 +135,12 @@ const config = {
     host: 'localhost',
     port: 8013,
     watchContentBase: true,
+  },
+
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.js',
+    },
   },
 };
 
