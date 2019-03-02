@@ -10,20 +10,46 @@ new Vue({
   },
   watch: {
     inputText: function (val) {
-      const parsed = markdown.parse(val);
-      console.log(parsed);
-      this.outputText = parsed.join('\n');
+      this.updateOutput(val);
     },
   },
   created: function () {
-    this.updateOutput();
+    this.updateOutput(this.inputText);
   },
   methods: {
-    updateOutput: function () {
-      const str = this.inputText;
-      const parsed = markdown.parse(str);
+    updateOutput: function (text) {
+      const parsed = markdown.parse(text);
       console.log(parsed);
-      this.outputText = parsed.join('\n');
+      this.outputText = this.getTextByParsedArray(parsed);
+    },
+    getTextByParsedArray: function (parsed) {
+      let str = '';
+      parsed.shift();
+
+      parsed.forEach((item) => {
+        str += this.normalizeParagraph(item);
+      });
+
+      return str;
+    },
+    normalizeParagraph(arr) {
+      let str = '';
+      const type = arr[0];
+      arr.shift();
+
+      if (type === 'header') {
+        arr.shift();
+      }
+
+      arr.forEach((item) => {
+        if (typeof item === 'string') {
+          str += item;
+        } else {
+          str += this.normalizeParagraph(item);
+        }
+      });
+
+      return str;
     },
   },
 });
