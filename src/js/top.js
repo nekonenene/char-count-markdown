@@ -28,6 +28,7 @@ new Vue({
 
       parsed.forEach((item) => {
         str += this.normalizeParagraph(item);
+        str += '\n\n';
       });
 
       return str;
@@ -45,6 +46,10 @@ new Vue({
         if (typeof item === 'string') {
           str += item;
         } else {
+          if (item[0] === 'linebreak') {
+            str += '\n';
+            return;
+          }
           str += this.normalizeParagraph(item);
         }
       });
