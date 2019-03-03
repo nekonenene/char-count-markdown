@@ -5,8 +5,8 @@ html(lang="ja")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
 
-    meta(name="description" content="")
-    meta(name="keywords"    content="")
+    meta(name="description" content="『文字数カウント for Markdown』は、マークダウンでレンダリング後の文字数を計算します。ブログや技術原稿などにおける、実際の文量を把握するためにお使いいただけます")
+    meta(name="keywords"    content="文字数,カウント,Markdown,マークダウン")
     meta(name="author"      content="nekonenene")
     link(rel="shortcut icon" href="./img/favicon.ico")
 
@@ -27,6 +27,9 @@ html(lang="ja")
           p.lead.text-muted
             | レンダリング後の文字数を計算します
       .container
+        .row
+          .col-md-12
+            | 文字数: {{ charCount }} , 文字数（スペース含まない）: {{ charCountWithoutSpace }} , 行数: {{ lineCount }}
         .row
           .col-lg-4.col-md-6.col-sm-12
             textarea(rows="25" style="width:100%;" v-model="inputText")

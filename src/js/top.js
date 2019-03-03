@@ -8,10 +8,14 @@ new Vue({
   el: '#app',
   data: {
     inputText: defaultString,
+    outputText: '',
   },
   watch: {
-    inputText: function (val) {
-      this.updateOutput(val);
+    inputText: function (mdText) {
+      this.updateOutput(mdText);
+    },
+    outputText: function (text) {
+      this.updateCharCount(text);
     },
   },
   created: function () {
@@ -21,6 +25,13 @@ new Vue({
     updateOutput: function (text) {
       this.outputText = this.getTextFromMarkdown(text);
       this.outputHtml = marked(text);
+      this.updateCharCount(this.outputText);
+    },
+    updateCharCount: function (text) {
+      const newLines = (text.match(/\n/g) || []).length;
+      this.lineCount = newLines + 1;
+      this.charCount = text.length - newLines;
+      this.charCountWithoutSpace = (text.match(/\S/g) || []).length;
     },
     getTextFromMarkdown(mdStr) {
       let str = '';
