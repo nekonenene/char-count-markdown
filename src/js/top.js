@@ -9,6 +9,12 @@ new Vue({
   data: {
     inputText: defaultString,
     outputText: '',
+    options: {
+      withoutCodeblock: false,
+      withoutHeading: false,
+      withoutTable: false,
+      withListItem: true,
+    },
   },
   watch: {
     inputText: function (mdText) {
@@ -16,6 +22,12 @@ new Vue({
     },
     outputText: function (text) {
       this.updateCharCount(text);
+    },
+    options: {
+      deep: true,
+      handler: function () {
+        this.updateOutput(this.inputText);
+      },
     },
   },
   created: function () {
@@ -51,10 +63,12 @@ new Vue({
             str += '\n';
             break;
           case 'code':
+            if (this.options.withoutCodeblock) break;
             str += token.text;
             str += '\n\n';
             break;
           case 'table':
+            if (this.options.withoutTable) break;
             str += this.getTextFromTableToken(token);
             break;
           case 'list_start':
@@ -65,6 +79,8 @@ new Vue({
             break;
           case 'list_item_start':
             str += '\t'.repeat(listDepth);
+
+            if (!this.options.withListItem) break;
             if (listStyles[listDepth].ordered) {
               str += `${listStyles[listDepth].num}. `;
               listStyles[listDepth].num += 1;
@@ -76,10 +92,10 @@ new Vue({
             listDepth -= 1;
             break;
           default:
+            if (token.type === 'heading' && this.options.withoutHeading) break;
             if (token.text != null) {
               const parsed = markdown.parse(token.text);
-              const text = this.getTextByParsedArray(parsed);
-              str += text;
+              str += this.getTextByParsedArray(parsed);
               str += '\n';
               if (token.type === 'heading') str += '\n';
             }

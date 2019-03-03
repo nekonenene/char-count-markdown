@@ -28,14 +28,27 @@ html(lang="ja")
             | レンダリング後の文字数を計算します
       .container
         .row
+          .col-md-4.input-group
+            input(type="checkbox" id="withoutCodeblock" v-model="options.withoutCodeblock")
+            label(for="withoutCodeblock") コードブロックを除く
+          .col-md-4.input-group
+            input(type="checkbox" id="withoutHeading" v-model="options.withoutHeading")
+            label(for="withoutHeading") タイトルを除く
+          .col-md-4.input-group
+            input(type="checkbox" id="withoutTable" v-model="options.withoutTable")
+            label(for="withoutTable") 表（テーブル）を除く
+          .col-md-4.input-group
+            input(type="checkbox" id="withListItem" v-model="options.withListItem")
+            label(for="withListItem") 箇条書きの先頭を記述
+        .row
           .col-md-12
-            | 文字数: {{ charCount }} , 文字数（スペース含まない）: {{ charCountWithoutSpace }} , 行数: {{ lineCount }}
+            | 文字数: {{ charCount }} , 文字数（スペース除外）: {{ charCountWithoutSpace }} , 行数: {{ lineCount }}
         .row
           .col-lg-4.col-md-6.col-sm-12
-            textarea(rows="25" style="width:100%;" v-model="inputText")
+            textarea(rows="25" style="width:100%;" v-model="inputText" placeholder="ここに入力してください")
           .col-lg-4.col-md-6.col-sm-12
             textarea(rows="25" style="width:100%;" v-model="outputText")
-          .col-lg-4.col-md-6.col-sm-12
+          .col-lg-4.col-md-12.col-sm-12
             p.markdown-output(v-html="outputHtml")
 
     footer.container.text-right
