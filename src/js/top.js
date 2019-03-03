@@ -35,6 +35,8 @@ new Vue({
     },
     getTextFromMarkdown(mdStr) {
       let str = '';
+      let listDepth = -1;
+      const listStyles = [];
 
       const tokens = marked.lexer(mdStr);
       console.log(tokens);
@@ -54,6 +56,24 @@ new Vue({
             break;
           case 'table':
             str += this.getTextFromTableToken(token);
+            break;
+          case 'list_start':
+            listDepth += 1;
+            listStyles[listDepth] = {};
+            listStyles[listDepth].ordered = token.ordered;
+            if (token.ordered) listStyles[listDepth].num = token.start;
+            break;
+          case 'list_item_start':
+            str += '\t'.repeat(listDepth);
+            if (listStyles[listDepth].ordered) {
+              str += `${listStyles[listDepth].num}. `;
+              listStyles[listDepth].num += 1;
+            } else {
+              str += '・';
+            }
+            break;
+          case 'list_end':
+            listDepth -= 1;
             break;
           default:
             if (token.text != null) {
