@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import { markdown } from 'markdown';
+import marked from 'marked';
 
 const defaultString = '# Hi!\n\nHello, **World**!\n\n```ruby\na = "abc"\nb = 2\n```\n\nThis is `code`.  \n`printf` is a method.\n\n`printf`はメソッドです。\n\n1. あれ\n2. それ\n3. どれ\n\n* あれ\n* それ\n* どれ\n';
 
@@ -18,9 +19,41 @@ new Vue({
   },
   methods: {
     updateOutput: function (text) {
-      const parsed = markdown.parse(text);
-      console.log(parsed);
-      this.outputText = this.getTextByParsedArray(parsed);
+      this.outputText = this.getTextFromMarkdown(text);
+      this.outputHtml = marked(text);
+    },
+    getTextFromMarkdown(mdStr) {
+      let str = '';
+
+      const tokens = marked.lexer(mdStr);
+      console.log(tokens);
+
+      tokens.forEach((token) => {
+        switch (token.type) {
+          case 'space':
+            str += '\n';
+            break;
+          case 'hr':
+            // str += '---\n\n';
+            str += '\n';
+            break;
+          case 'code':
+            str += token.text;
+            str += '\n\n';
+            break;
+          default:
+            if (token.text != null) {
+              const parsed = markdown.parse(token.text);
+              const text = this.getTextByParsedArray(parsed);
+              str += text;
+              str += '\n';
+              if (token.type === 'heading') str += '\n';
+            }
+            break;
+        }
+      });
+
+      return str;
     },
     getTextByParsedArray: function (parsed) {
       let str = '';
@@ -28,7 +61,6 @@ new Vue({
 
       parsed.forEach((item) => {
         str += this.normalizeParagraph(item);
-        str += '\n\n';
       });
 
       return str;
@@ -43,15 +75,22 @@ new Vue({
       }
 
       arr.forEach((item) => {
-        if (typeof item === 'string') {
-          str += item;
-        } else {
+        if (Array.isArray(item)) {
           if (item[0] === 'linebreak') {
             str += '\n';
             return;
           }
           str += this.normalizeParagraph(item);
+          return;
         }
+
+        if (typeof item === 'string') {
+          str += item;
+          return;
+        }
+
+        console.log(item);
+        console.log(typeof item);
       });
 
       return str;

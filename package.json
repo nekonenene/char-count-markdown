@@ -48,6 +48,7 @@
     "bootstrap-material-design": "^4.1.1",
     "jquery": "^3.3.1",
     "markdown": "^0.5.0",
+    "marked": "^0.6.1",
     "normalize.css": "^8.0.1",
     "popper.js": "^1.14.7",
     "vue": "^2.6.8",
