@@ -41,6 +41,9 @@ new Vue({
             str += token.text;
             str += '\n\n';
             break;
+          case 'table':
+            str += this.getTextFromTableToken(token);
+            break;
           default:
             if (token.text != null) {
               const parsed = markdown.parse(token.text);
@@ -52,6 +55,33 @@ new Vue({
             break;
         }
       });
+
+      return str;
+    },
+    getTextFromTableToken: function (token) {
+      console.log(token);
+      let str = '';
+
+      token.header.forEach((column, idx) => {
+        const parsed = markdown.parse(column);
+        str += this.getTextByParsedArray(parsed);
+        if (idx !== token.header.length - 1) {
+          str += '\t';
+        }
+      });
+      str += '\n';
+
+      token.cells.forEach((cell) => {
+        cell.forEach((column, idx) => {
+          const parsed = markdown.parse(column);
+          str += this.getTextByParsedArray(parsed);
+          if (idx !== cell.length - 1) {
+            str += '\t';
+          }
+        });
+        str += '\n';
+      });
+      str += '\n';
 
       return str;
     },
