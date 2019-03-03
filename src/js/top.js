@@ -157,17 +157,21 @@ new Vue({
             str += '\n';
             return;
           }
+          if (item[0] === 'inlinecode') {
+            str += item[1];
+            return;
+          }
+
           str += this.normalizeParagraph(item);
           return;
         }
 
         if (typeof item === 'string') {
-          str += item;
-          return;
+          str += item.replace(/<(?:.|\n)+?>/gm, '');
         }
 
-        console.log(item);
-        console.log(typeof item);
+        // console.log(item);
+        // console.log(typeof item);
       });
 
       return str;
