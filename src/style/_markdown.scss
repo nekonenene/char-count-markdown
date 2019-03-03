@@ -1,0 +1,50 @@
+.markdown-output {
+  font-size: 85%;
+  overflow-x: auto;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+  h4 {
+    font-size: 1.0rem;
+  }
+  h5 {
+    font-size: 0.8rem;
+  }
+  h6 {
+    font-size: 0.6rem;
+  }
+
+  blockquote {
+    border-left: 4px solid #dddddd;
+    padding: 0 15px;
+    color: #777777;
+  }
+
+  table {
+    margin: 1.0rem 0rem;
+
+    th, td {
+      border: 1px solid #777777;
+      padding: 6px 13px;
+    }
+  }
+
+  pre {
+    background-color: #f8f8f8;
+    padding: 6px 10px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    overflow: auto;
+  }
+}

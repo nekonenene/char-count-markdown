@@ -14,7 +14,7 @@ html(lang="ja")
     meta(name="theme-color" content="#2b0de8")
     link(rel="icon" href="./img/favicon_192.png" sizes="192x192")
 
-    - var title = "練習ページ";
+    - var title = "文字数カウント for Markdown";
     title #{title}
 
     //- My Stylesheets
@@ -25,7 +25,7 @@ html(lang="ja")
         .container
           h1.jumbotron-heading #{title}
           p.lead.text-muted
-            | ようこそ！
+            | レンダリング後の文字数を計算します
       .container
         .row
           .col-lg-4.col-md-6.col-sm-12
@@ -33,7 +33,7 @@ html(lang="ja")
           .col-lg-4.col-md-6.col-sm-12
             textarea(rows="25" style="width:100%;" v-model="outputText")
           .col-lg-4.col-md-6.col-sm-12
-            p(v-html="outputHtml")
+            p.markdown-output(v-html="outputHtml")
 
     footer.container.text-right
       a(href="http://hato-neko.x0.com" target="_blank" title="ハトネコエセンター").
