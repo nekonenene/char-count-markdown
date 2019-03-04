@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { markdown } from 'markdown';
 import marked from 'marked';
 
-const defaultString = '# Hi!\n\nHello, **World**!\n\n```ruby\na = "abc"\nb = 2\n```\n\nThis is `code`.  \n`printf` is a method.\n\n`printf`はメソッドです。\n\n1. あれ\n2. それ\n3. どれ\n\n* あれ\n* それ\n* どれ\n';
+const defaultString = '# これは何？\n\n**『文字数カウント for Markdown』**は、マークダウンでレンダリングされた後の文字数を計測します。\n\n# 使い方\n\n1. 一番左のテキストボックスに[Markdown](https://github.github.com/gfm/)を入力してください。\n2. その右のテキストボックスに、レンダリング後のテキストが出力され、文字数がカウントされます。\n\n## オプション\n\n|オプション名|<p align="center">効果</p>|\n|:---:|:---|\n|コードブロックを除く| \\`\\`\\` で囲まれるコードブロックを省いてカウントします|\n|タイトルを除く| \\# で始まるタイトルを省いてカウントします|\n|表（テーブル）を除く|このような表を省いてカウントします|\n|箇条書きの先頭を記述|「1. 」や「・」など、箇条書きの先頭を自動で記述します|\n';
 
 new Vue({
   el: '#app',
