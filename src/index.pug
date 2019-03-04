@@ -27,7 +27,7 @@ html(lang="ja")
           p.lead.text-muted
             | レンダリング後の文字数を計算します
       .container
-        .row
+        .row.mb-1
           .col-md-4.input-group
             input(type="checkbox" id="withoutCodeblock" v-model="options.withoutCodeblock")
             label(for="withoutCodeblock") コードブロックを除く
@@ -46,7 +46,7 @@ html(lang="ja")
           .col-md-4.input-group
             input(type="checkbox" id="withoutHatenaTag" v-model="options.withoutHatenaTag")
             label(for="withoutHatenaTag") 一部のはてな記法を除く（実験中）
-        .row
+        .row.mb-2
           .col-md-12
             | 元の文字数: {{ inputCount.normal }} , 元の文字数（スペース除外）: {{ inputCount.withoutSpace }} , 元の行数: {{ inputCount.lines }}
           .col-md-12
@@ -59,7 +59,7 @@ html(lang="ja")
           .col-lg-4.col-md-12.col-sm-12
             p.markdown-output(v-html="outputHtml")
 
-    footer.container.text-right
+    footer.container.text-right.mb-3
       a(href="http://hato-neko.x0.com" target="_blank" title="ハトネコエセンター").
         ハトネコエ
       | &nbsp;
