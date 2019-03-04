@@ -1,23 +1,54 @@
-# Web Dev Template with Webpack
+# 文字数カウント for Markdown
 
-https://github.com/nekonenene/web-dev-template を、gulpからwebpackに乗り換えることで刷新した
+マークダウンでレンダリング後の文字数を計算
 
-## Node.js version
+**ここでさわれます！: [https://nekonenene.github.io/char-count-markdown](https://nekonenene.github.io/char-count-markdown)**
 
-v10.15.2 で構築
+
+## Require
+
+* Node.js: v10.15.2 (v10.x LTS)
+* npm: v6.4.1 or above
+
 
 ## 開発するには……
 
 このリポジトリをクローンしたのち、
 
 ```
-npm install
+make init
 ```
 
 で依存ライブラリのダウンロード。
 
 ```
-npm run start
+make run
 ```
 
 で開発用サーバーが起動し、 http://localhost:8013 にアクセス可能。
+
+
+## ビルドするには……
+
+* 本番環境用
+  ```
+  make build
+  ```
+
+* 開発環境用
+  ```
+  make build-dev
+  ```
+
+
+## linter
+
+* lint チェック!!
+  ```
+  make lint
+  ```
+
+* lint fix!!
+  ```
+  make lint-fix
+  ```
