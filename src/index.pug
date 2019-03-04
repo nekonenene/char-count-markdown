@@ -36,10 +36,16 @@ html(lang="ja")
             label(for="withoutHeading") タイトルを除く
           .col-md-4.input-group
             input(type="checkbox" id="withoutTable" v-model="options.withoutTable")
-            label(for="withoutTable") 表（テーブル）を除く
+            label(for="withoutTable") 表(テーブル)を除く
           .col-md-4.input-group
             input(type="checkbox" id="withListItem" v-model="options.withListItem")
             label(for="withListItem") 箇条書きの先頭を記述
+          .col-md-4.input-group
+            input(type="checkbox" id="withoutHtmlTag" v-model="options.withoutHtmlTag")
+            label(for="withoutHtmlTag") HTMLタグを除く（実験中）
+          .col-md-4.input-group
+            input(type="checkbox" id="withoutHatenaTag" v-model="options.withoutHatenaTag")
+            label(for="withoutHatenaTag") 一部のはてな記法を除く（実験中）
         .row
           .col-md-12
             | 元の文字数: {{ inputCount.normal }} , 元の文字数（スペース除外）: {{ inputCount.withoutSpace }} , 元の行数: {{ inputCount.lines }}

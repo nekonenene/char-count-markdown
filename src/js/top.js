@@ -99,8 +99,7 @@ new Vue({
           default:
             if (token.type === 'heading' && this.options.withoutHeading) break;
             if (token.text != null) {
-              const parsed = markdown.parse(token.text);
-              str += this.getTextByParsedArray(parsed);
+              str += this.getTextFromInlineMarkdown(token.text);
               str += '\n';
               if (token.type === 'heading') str += '\n';
             }
@@ -115,8 +114,7 @@ new Vue({
       let str = '';
 
       token.header.forEach((column, idx) => {
-        const parsed = markdown.parse(column);
-        str += this.getTextByParsedArray(parsed);
+        str += this.getTextFromInlineMarkdown(column);
         if (idx !== token.header.length - 1) {
           str += '\t';
         }
@@ -125,8 +123,7 @@ new Vue({
 
       token.cells.forEach((cell) => {
         cell.forEach((column, idx) => {
-          const parsed = markdown.parse(column);
-          str += this.getTextByParsedArray(parsed);
+          str += this.getTextFromInlineMarkdown(column);
           if (idx !== cell.length - 1) {
             str += '\t';
           }
@@ -137,7 +134,8 @@ new Vue({
 
       return str;
     },
-    getTextByParsedArray: function (parsed) {
+    getTextFromInlineMarkdown: function (mdText) {
+      const parsed = markdown.parse(mdText);
       let str = '';
       parsed.shift();
 
@@ -166,13 +164,31 @@ new Vue({
             str += item[1];
             return;
           }
+          if (item[0] === 'link_ref') {
+            console.log(item);
+
+            const inline = item[1].ref;
+            const hatenaReg = /(niconico|google|map|amazon|wikipedia|(a:|f:|b:|d:|h:)?id|question|b:t|g|graph|(b:|d:|h:)?keyword|isbn|asin|rakuten|jan|ean):.+/gm;
+            if (this.options.withoutHatenaTag) {
+              if (inline.search(hatenaReg) >= 0) return;
+
+              // FIXME: underscore _ 2つが含まれるなどのURLはここに到達できない
+              str += inline.replace(/(https?:[^:]*).*/gm, '$1');
+              return;
+            }
+            str += `[${this.normalizeParagraph(item)}]`;
+            return;
+          }
 
           str += this.normalizeParagraph(item);
           return;
         }
 
         if (typeof item === 'string') {
-          str += item.replace(/<(?:.|\n)+?>/gm, '');
+          let addStr = item;
+          // FIXME: underscore _ 2つがタグ中に含まれていると、パースの関係でここで削除できない
+          if (this.options.withoutHtmlTag) addStr = addStr.replace(/<(?:.|\n)+?>/gm, '');
+          str += addStr;
         }
 
         // console.log(item);
