@@ -56,7 +56,7 @@ new Vue({
       const listStyles = [];
 
       const tokens = marked.lexer(mdStr);
-      console.log(tokens);
+      // console.log(tokens);
 
       tokens.forEach((token) => {
         switch (token.type) {
@@ -110,7 +110,6 @@ new Vue({
       return str;
     },
     getTextFromTableToken: function (token) {
-      console.log(token);
       let str = '';
 
       token.header.forEach((column, idx) => {
@@ -165,8 +164,6 @@ new Vue({
             return;
           }
           if (item[0] === 'link_ref') {
-            console.log(item);
-
             const inline = item[1].ref;
             const hatenaReg = /(niconico|google|map|amazon|wikipedia|(a:|f:|b:|d:|h:)?id|question|b:t|g|graph|(b:|d:|h:)?keyword|isbn|asin|rakuten|jan|ean):.+/gm;
             if (this.options.withoutHatenaTag) {
