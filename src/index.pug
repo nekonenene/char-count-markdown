@@ -42,7 +42,9 @@ html(lang="ja")
             label(for="withListItem") 箇条書きの先頭を記述
         .row
           .col-md-12
-            | 文字数: {{ charCount }} , 文字数（スペース除外）: {{ charCountWithoutSpace }} , 行数: {{ lineCount }}
+            | 元の文字数: {{ inputCount.normal }} , 元の文字数（スペース除外）: {{ inputCount.withoutSpace }} , 元の行数: {{ inputCount.lines }}
+          .col-md-12
+            | 文字数: {{ outputCount.normal }} , 文字数（スペース除外）: {{ outputCount.withoutSpace }} , 行数: {{ outputCount.lines }}
         .row
           .col-lg-4.col-md-6.col-sm-12
             textarea(rows="25" style="width:100%;" v-model="inputText" placeholder="ここに入力してください")

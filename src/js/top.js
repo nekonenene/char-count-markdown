@@ -9,6 +9,8 @@ new Vue({
   data: {
     inputText: defaultString,
     outputText: '',
+    inputCount: {},
+    outputCount: {},
     options: {
       withoutCodeblock: false,
       withoutHeading: false,
@@ -18,10 +20,11 @@ new Vue({
   },
   watch: {
     inputText: function (mdText) {
+      this.updateCount(mdText, this.inputCount);
       this.updateOutput(mdText);
     },
     outputText: function (text) {
-      this.updateCharCount(text);
+      this.updateCount(text, this.outputCount);
     },
     options: {
       deep: true,
@@ -31,19 +34,21 @@ new Vue({
     },
   },
   created: function () {
+    this.updateCount(this.inputText, this.inputCount);
     this.updateOutput(this.inputText);
   },
   methods: {
     updateOutput: function (text) {
       this.outputText = this.getTextFromMarkdown(text);
       this.outputHtml = marked(text);
-      this.updateCharCount(this.outputText);
+      this.updateCount(this.outputText, this.outputCount);
     },
-    updateCharCount: function (text) {
+    updateCount: function (text, counterObj) {
+      const obj = counterObj;
       const newLines = (text.match(/\n/g) || []).length;
-      this.lineCount = newLines + 1;
-      this.charCount = text.length - newLines;
-      this.charCountWithoutSpace = (text.match(/\S/g) || []).length;
+      obj.lines = newLines + 1;
+      obj.normal = text.length - newLines;
+      obj.withoutSpace = (text.match(/\S/g) || []).length;
     },
     getTextFromMarkdown(mdStr) {
       let str = '';
